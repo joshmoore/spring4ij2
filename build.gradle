@@ -4,7 +4,7 @@ apply plugin: 'eclipse'
 group="spring4ij2"
 version="0.1-SNAPSHOT"
 buildDir="target"
-defaultTasks=["build"]
+defaultTasks=["build", "cleanEclipse", "eclipse"]
 
 repositories {
     mavenCentral()
