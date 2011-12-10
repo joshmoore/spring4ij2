@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="someList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>hi</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="someMap" class="java.util.HashMap"/>
+
+</beans>

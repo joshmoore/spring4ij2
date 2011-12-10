@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+  "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+  <description>
+  beanRefContext.xml files are, by convention, locations where contexts can be
+  defined in configuration rather than code. 
+  </description>
+
+  <bean    id="example1"
+        class="org.springframework.context.support.ClassPathXmlApplicationContext"
+        lazy-init="true">
+    <constructor-arg index="0">
+      <list>
+        <value>classpath:listAndMap.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+</beans>

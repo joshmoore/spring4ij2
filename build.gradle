@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group="spring4ij2"
+version="0.1-SNAPSHOT"
+buildDir="target"
+defaultTasks=["build"]
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.+"
+    testCompile "org.springframework:spring-test:3.0.6.RELEASE"
+    compile "org.springframework:spring-context:3.0.6.RELEASE"
+    runtime "org.springframework:spring-beans:3.0.6.RELEASE"
+    runtime "org.springframework:spring-core:3.0.6.RELEASE"
+}
