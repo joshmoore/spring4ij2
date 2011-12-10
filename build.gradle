@@ -16,4 +16,5 @@ dependencies {
     compile "org.springframework:spring-context:3.0.6.RELEASE"
     runtime "org.springframework:spring-beans:3.0.6.RELEASE"
     runtime "org.springframework:spring-core:3.0.6.RELEASE"
+    runtime "cglib:cglib:2.2"
 }

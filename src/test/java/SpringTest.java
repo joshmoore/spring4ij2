@@ -1,10 +1,12 @@
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringTest {
@@ -35,6 +37,18 @@ public class SpringTest {
                 "classpath:integer1.xml");
         Integer i = ctx.getBean("myint", Integer.class);
         assertEquals(Integer.valueOf(1), i);
+    }
+
+    /**
+     * In addition to XML configuration, Spring can also use Java classes with
+     * annotations to configure services, etc.
+     */
+    @Test
+    public void testJavaConfiguration() throws Exception {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(
+                AppConfig1.class);
+        String myValue = ctx.getBean("myValue", String.class);
+        assertEquals("whoo", myValue);
     }
 
 }
