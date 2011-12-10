@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringTest {
@@ -49,6 +51,18 @@ public class SpringTest {
                 AppConfig1.class);
         String myValue = ctx.getBean("myValue", String.class);
         assertEquals("whoo", myValue);
+    }
+
+    @Test
+    public void testFindByAnnotation() throws Exception {
+        ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(
+                true);
+
+        // scanner.addIncludeFilter(new
+        // AnnotationTypeFilter(<TYPE_YOUR_ANNOTATION_HERE>.class));
+
+        for (BeanDefinition bd : scanner.findCandidateComponents("ex"))
+            assertEquals("ex.MyThing", bd.getBeanClassName());
     }
 
 }
