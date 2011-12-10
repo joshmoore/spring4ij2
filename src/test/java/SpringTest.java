@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,9 @@ import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import ex2.Finder;
+import ex2.JoshPluginFinder;
 
 public class SpringTest {
 
@@ -65,4 +69,14 @@ public class SpringTest {
             assertEquals("ex.MyThing", bd.getBeanClassName());
     }
 
+    @Test
+    public void testServiceScanningWithRegex() throws Exception {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+                "services.xml");
+        Map<String, Finder> finders = ctx.getBeansOfType(Finder.class);
+        assertEquals(1, finders.size());
+        String key = finders.keySet().iterator().next();
+        Finder value = finders.get(key);
+        assertEquals(JoshPluginFinder.class, value.getClass());
+    }
 }
