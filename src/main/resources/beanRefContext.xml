@@ -5,7 +5,7 @@
 
   <description>
   beanRefContext.xml files are, by convention, locations where contexts can be
-  defined in configuration rather than code. 
+  defined in configuration rather than code.
   </description>
 
   <bean    id="example1"
