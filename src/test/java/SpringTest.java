@@ -73,6 +73,28 @@ public class SpringTest {
     public void testServiceScanningWithRegex() throws Exception {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
                 "services.xml");
+        assertServicesXmlFile(ctx);
+    }
+
+    /**
+     * With Spring 3.0, the current best practice for scanning is to import XML.
+     *
+     * See: http://stackoverflow.com/questions/6683771/spring-configuration-and-
+     * contextcomponent-scan
+     */
+    @Test
+    public void testJavaConfigWithImport() throws Exception {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(
+                BarConfig.class);
+        assertServicesXmlFile(ctx);
+
+    }
+
+    //
+    // Helpers
+    //
+
+    protected void assertServicesXmlFile(ApplicationContext ctx) {
         Map<String, Finder> finders = ctx.getBeansOfType(Finder.class);
         assertEquals(1, finders.size());
         String key = finders.keySet().iterator().next();
